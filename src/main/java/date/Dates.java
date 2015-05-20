@@ -88,8 +88,13 @@ public class Dates {
 
     @Override
     public String toString() {
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        return formatter.format(this.calendar.getTime());
+        String value=""+this.calendar.get(Calendar.MONTH);
+        value+="/"+this.calendar.get(Calendar.DAY_OF_MONTH);
+        value+="/"+this.calendar.get(Calendar.YEAR);
+        value+=" "+this.calendar.get(Calendar.HOUR_OF_DAY);
+        value+=":"+this.calendar.get(Calendar.MINUTE);
+        value+=":"+this.calendar.get(Calendar.SECOND);
+        return value;
     }
 
 
