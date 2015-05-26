@@ -50,11 +50,11 @@ public class Dates {
         this.calendar.add(field, (int) amount);
     }
 
-    public long difference(final Dates dates, final int type) {
-        return difference(dates.calendar(), type);
+    public long difference(final Dates startDate, final int type) {
+        return difference(startDate.calendar(), type);
     }
 
-    public long difference(Calendar endDate, int type) {
+    public long difference(Calendar startDate, int type) {
         final Calendar start = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         start.set(Calendar.YEAR, this.calendar.get(Calendar.YEAR));
         start.set(Calendar.MONTH, this.calendar.get(Calendar.MONTH));
@@ -64,13 +64,13 @@ public class Dates {
         start.set(Calendar.SECOND, this.calendar.get(Calendar.SECOND));
         start.set(Calendar.MILLISECOND, this.calendar.get(Calendar.MILLISECOND));
         final Calendar end = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        end.set(Calendar.YEAR, endDate.get(Calendar.YEAR));
-        end.set(Calendar.MONTH, endDate.get(Calendar.MONTH));
-        end.set(Calendar.DAY_OF_MONTH, endDate.get(Calendar.DAY_OF_MONTH));
-        end.set(Calendar.HOUR_OF_DAY, endDate.get(Calendar.HOUR_OF_DAY));
-        end.set(Calendar.MINUTE, endDate.get(Calendar.MINUTE));
-        end.set(Calendar.SECOND, endDate.get(Calendar.SECOND));
-        end.set(Calendar.MILLISECOND, endDate.get(Calendar.MILLISECOND));
+        end.set(Calendar.YEAR, startDate.get(Calendar.YEAR));
+        end.set(Calendar.MONTH, startDate.get(Calendar.MONTH));
+        end.set(Calendar.DAY_OF_MONTH, startDate.get(Calendar.DAY_OF_MONTH));
+        end.set(Calendar.HOUR_OF_DAY, startDate.get(Calendar.HOUR_OF_DAY));
+        end.set(Calendar.MINUTE, startDate.get(Calendar.MINUTE));
+        end.set(Calendar.SECOND, startDate.get(Calendar.SECOND));
+        end.set(Calendar.MILLISECOND, startDate.get(Calendar.MILLISECOND));
         long between = 0;
         if (start.before(end)) {
             while (start.before(end)) {
@@ -88,12 +88,12 @@ public class Dates {
 
     @Override
     public String toString() {
-        String value=""+this.calendar.get(Calendar.MONTH);
-        value+="/"+this.calendar.get(Calendar.DAY_OF_MONTH);
-        value+="/"+this.calendar.get(Calendar.YEAR);
-        value+=" "+this.calendar.get(Calendar.HOUR_OF_DAY);
-        value+=":"+this.calendar.get(Calendar.MINUTE);
-        value+=":"+this.calendar.get(Calendar.SECOND);
+        String value = "" + this.calendar.get(Calendar.MONTH);
+        value += "/" + this.calendar.get(Calendar.DAY_OF_MONTH);
+        value += "/" + this.calendar.get(Calendar.YEAR);
+        value += " " + this.calendar.get(Calendar.HOUR_OF_DAY);
+        value += ":" + this.calendar.get(Calendar.MINUTE);
+        value += ":" + this.calendar.get(Calendar.SECOND);
         return value;
     }
 
